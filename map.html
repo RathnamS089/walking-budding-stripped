@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Map | Walking Buddy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        /* Force the map container to have height */
+        #map { height: 100%; width: 100%; }
+    </style>
+</head>
+<body class="h-screen flex flex-col bg-background">
+    
+    <nav class="h-20 bg-surface flex items-center px-md justify-between border-b border-outline shrink-0">
+        <span class="font-bold text-primary">Walking Buddy</span>
+        <div class="bg-surface-container px-base py-xs rounded-full text-xs">Pace: Active</div>
+    </nav>
+
+    <!-- This is the ONLY map container -->
+    <main id="map" class="flex-1"></main>
+
+    <!-- Load Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script>
+        // Initialize map only after the page is fully loaded
+        const map = L.map('map').setView([12.9716, 77.5946], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Profile Setup | Walking Buddy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-background text-on-surface p-md">
+    <div class="max-w-md mx-auto mt-xl">
+        <h2 class="text-headline-md mb-md">Tell us about your preferences</h2>
+        
+        <form id="surveyForm" class="space-y-base">
+            <!-- Questions 1-10 -->
+            <div class="space-y-xs">
+                <label class="block text-sm">1. Preferred time of day?</label>
+                <input type="text" name="q1" required class="w-full bg-surface-container p-sm rounded-lg border border-outline"/>
+            </div>
+            <div class="space-y-xs">
+                <label class="block text-sm">2. Average walk duration (minutes)?</label>
+                <input type="number" name="q2" required class="w-full bg-surface-container p-sm rounded-lg border border-outline"/>
+            </div>
+            <div class="space-y-xs">
+                <label class="block text-sm">3. Preferred terrain (flat/hilly)?</label>
+                <input type="text" name="q3" required class="w-full bg-surface-container p-sm rounded-lg border border-outline"/>
+            </div>
+            <div class="space-y-xs">
+                <label class="block text-sm">4. Do you bring a pet?</label>
+                <input type="text" name="q4" required class="w-full bg-surface-container p-sm rounded-lg border border-outline"/>
+            </div>
+            <div class="space-y-xs">
+                <label class="block text-sm">5. Walking pace (relaxed/fast)?</label>
+                <input type="text" name="q5" required class="w-full bg-surface-container p-sm rounded-lg border border-outline"/>
+            </div>
+            <div class="space-y-xs">
+                <label class="block text-sm">6. Goal (fitness/social)?</label>
+                <input type="text" name="q6" required class="w-full bg-surface-container p-sm rounded-lg border border-outline"/>
+            </div>
+            <div class="space-y-xs">
+                <label class="block text-sm">7. Preferred group size?</label>
+                <input type="number" name="q7" required class="w-full bg-surface-container p-sm rounded-lg border border-outline"/>
+            </div>
+            <div class="space-y-xs">
+                <label class="block text-sm">8. Experience level?</label>
+                <input type="text" name="q8" required class="w-full bg-surface-container p-sm rounded-lg border border-outline"/>
+            </div>
+            <div class="space-y-xs">
+                <label class="block text-sm">9. Looking for urban or nature trails?</label>
+                <input type="text" name="q9" required class="w-full bg-surface-container p-sm rounded-lg border border-outline"/>
+            </div>
+            <div class="space-y-xs">
+                <label class="block text-sm">10. Anything else to add?</label>
+                <input type="text" name="q10" required class="w-full bg-surface-container p-sm rounded-lg border border-outline"/>
+            </div>
+
+            <button type="submit" class="w-full bg-primary text-on-primary py-sm rounded-full font-bold mt-lg">
+                Save & Continue
+            </button>
+        </form>
+    </div>
+
+    <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="app.js"></script>
+
+    <script>
+        document.getElementById('surveyForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const answers = Object.fromEntries(formData.entries());
+            saveSurvey(answers); // Uses the global function from app.js
+        });
+    </script>
+</body>
+</html>

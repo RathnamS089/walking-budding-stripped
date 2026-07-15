@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Walking Buddy | Find Your Perfect Walking Companion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-background text-on-surface p-md">
+    <nav class="max-w-4xl mx-auto flex justify-between items-center py-md">
+        <h1 class="font-bold text-primary">Walking Buddy</h1>
+        <button id="get-started-btn" class="bg-primary text-on-primary px-lg py-sm rounded-full font-bold">
+            Let's Get Started
+        </button>
+    </nav>
+
+    <main class="max-w-md mx-auto mt-xl text-center">
+        <h2 class="text-display-lg mb-base">Welcome to Walking Buddy</h2>
+        <p class="text-on-surface-variant mb-lg">Find your perfect walking companion today.</p>
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="app.js"></script>
+    <script>
+        document.getElementById('get-started-btn').addEventListener('click', () => {
+            initiateLogin(); // This function must be defined in your app.js
+        });
+    </script>
+</body>
+</html>

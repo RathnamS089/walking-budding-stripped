@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Verify | Walking Buddy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-background text-on-surface p-md">
+    <div class="max-w-md mx-auto mt-xl">
+        <h2 class="text-headline-md mb-md">Enter Phone Number</h2>
+        <input type="tel" id="phone" placeholder="9876543210" class="w-full bg-surface-container p-sm mb-base border-b border-outline outline-none"/>
+        <button id="save-btn" class="w-full bg-primary text-on-primary p-sm rounded-full font-bold">Continue</button>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="app.js"></script>
+    <script>
+        document.getElementById('save-btn').addEventListener('click', () => {
+            const phone = document.getElementById('phone').value;
+            if (/^[6-9]\d{9}$/.test(phone)) {
+                const uid = firebase.auth().currentUser.uid;
+                db.collection("users").doc(uid).update({ 
+                    phoneNumber: phone,
+                    pace: localStorage.getItem('pace')
+                }).then(() => window.location.href = 'map.html');
+            } else {
+                alert("Please enter a valid 10-digit number.");
+            }
+        });
+    </script>
+</body>
+</html>
